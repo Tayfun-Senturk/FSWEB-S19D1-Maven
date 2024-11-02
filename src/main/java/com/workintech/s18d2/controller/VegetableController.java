@@ -1,27 +1,21 @@
 package com.workintech.s18d2.controller;
 
-import com.workintech.s18d2.entity.Fruit;
 import com.workintech.s18d2.entity.Vegetable;
-import com.workintech.s18d2.services.FruitServiceImpl;
 import com.workintech.s18d2.services.VegetableService;
 import com.workintech.s18d2.services.VegetableServiceImpl;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RequestMapping("/vegetable")
 @RestController
 public class VegetableController {
-    private VegetableServiceImpl vegetableService;
-
-    @Autowired
-    public VegetableController(VegetableServiceImpl vegetableService) {
-        this.vegetableService = vegetableService;
-    }
+    private final VegetableService vegetableService;
 
     @GetMapping
     public List<Vegetable> getVegetableAsc() {
